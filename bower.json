@@ -1,0 +1,23 @@
+{
+  "name": "emiberea/fii-research2",
+  "version": "0.0.0",
+  "authors": [
+    "Emi Berea <emi.berea@gmail.com>"
+  ],
+  "description": "Manage front-end frameworks and libraries",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.4"
+  }
+}
