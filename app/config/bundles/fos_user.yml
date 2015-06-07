@@ -1,0 +1,24 @@
+# FOSUserBundle Configuration
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: EB\UserBundle\Entity\User
+    from_email:
+        address:        noreply@research2.fii.com
+        sender_name:    Research2Fii - No Reply
+    registration:
+        confirmation:
+            enabled: true
+            from_email:
+                address:        registration@research2.fii.com
+                sender_name:    Research2Fii - Registration
+        form:
+            type: eb_user_registration
+    resetting:
+        email:
+            from_email:
+                address:        resetting@research2.fii.com
+                sender_name:    Research2Fii - Resetting
+    profile:
+        form:
+            type: eb_user_profile
