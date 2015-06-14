@@ -101,7 +101,7 @@ class Student
     /**
      * @var float
      *
-     * @ORM\Column(name="final_grade", type="decimal", precision=4, scale=2)
+     * @ORM\Column(name="final_grade", type="decimal", precision=4, scale=2, nullable=true)
      */
     private $finalGrade;
 

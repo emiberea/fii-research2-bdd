@@ -1,0 +1,84 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme edit_form 'EBAppBundle:Form:fields.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Student creation</h1>
+
+            <form action="{{ path('student_update', {'id': entity.id}) }}" {{ form_enctype(edit_form) }} method="POST" role="form">
+                <div class="form-group">
+                    {{ form_label(edit_form.firstName) }}
+                    {{ form_widget(edit_form.firstName, {attr: {placeholder: 'First name'}}) }}
+                    {{ form_errors(edit_form.firstName) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.lastName) }}
+                    {{ form_widget(edit_form.lastName, {attr: {placeholder: 'Last name'}}) }}
+                    {{ form_errors(edit_form.lastName) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.fatherInitial) }}
+                    {{ form_widget(edit_form.fatherInitial, {attr: {placeholder: 'Father initial'}}) }}
+                    {{ form_errors(edit_form.fatherInitial) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.pin) }}
+                    {{ form_widget(edit_form.pin, {attr: {placeholder: 'Pin'}}) }}
+                    {{ form_errors(edit_form.pin) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.city) }}
+                    {{ form_widget(edit_form.city, {attr: {placeholder: 'City'}}) }}
+                    {{ form_errors(edit_form.city) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.address) }}
+                    {{ form_widget(edit_form.address, {attr: {placeholder: 'Address'}}) }}
+                    {{ form_errors(edit_form.address) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.highSchool) }}
+                    {{ form_widget(edit_form.highSchool, {attr: {placeholder: 'High school'}}) }}
+                    {{ form_errors(edit_form.highSchool) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.specialization) }}
+                    {{ form_widget(edit_form.specialization, {attr: {placeholder: 'Specialization'}}) }}
+                    {{ form_errors(edit_form.specialization) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.admissionExamGrade) }}
+                    {{ form_widget(edit_form.admissionExamGrade, {attr: {placeholder: '0.00'}}) }}
+                    {{ form_errors(edit_form.admissionExamGrade) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.baccalaureateAverageGrade) }}
+                    {{ form_widget(edit_form.baccalaureateAverageGrade, {attr: {placeholder: '0.00'}}) }}
+                    {{ form_errors(edit_form.baccalaureateAverageGrade) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.baccalaureateMaximumGrade) }}
+                    {{ form_widget(edit_form.baccalaureateMaximumGrade, {attr: {placeholder: '0.00'}}) }}
+                    {{ form_errors(edit_form.baccalaureateMaximumGrade) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.admission) }}
+                    {{ form_widget(edit_form.admission) }}
+                    {{ form_errors(edit_form.admission) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(edit_form.submit, {'attr': {'class': 'btn btn-success'}}) }}
+                </div>
+                {{ form_rest(edit_form) }}
+            </form>
+
+            {{ form(delete_form) }}
+
+            <a href="{{ path('student') }}">
+                Back to the list
+            </a>
+        </div>
+    </div>
+{% endblock %}

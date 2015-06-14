@@ -1,0 +1,80 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h1>Student</h1>
+
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>First name</th>
+                    <td>{{ entity.firstName }}</td>
+                </tr>
+                <tr>
+                    <th>Last name</th>
+                    <td>{{ entity.lastName }}</td>
+                </tr>
+                <tr>
+                    <th>Father initial</th>
+                    <td>{{ entity.fatherInitial }}</td>
+                </tr>
+                <tr>
+                    <th>Pin</th>
+                    <td>{{ entity.pin }}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{ entity.city }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ entity.address }}</td>
+                </tr>
+                <tr>
+                    <th>High school</th>
+                    <td>{{ entity.highSchool }}</td>
+                </tr>
+                <tr>
+                    <th>Specialization</th>
+                    <td>{{ entity.specialization }}</td>
+                </tr>
+                <tr>
+                    <th>Admission exam grade</th>
+                    <td>{{ entity.admissionExamGrade }}</td>
+                </tr>
+                <tr>
+                    <th>Baccalaureate average grade</th>
+                    <td>{{ entity.baccalaureateAverageGrade }}</td>
+                </tr>
+                <tr>
+                    <th>Baccalaureate maximum grade</th>
+                    <td>{{ entity.baccalaureateMaximumGrade }}</td>
+                </tr>
+                <tr>
+                    <th>Final grade</th>
+                    <td>{{ entity.finalGrade }}</td>
+                </tr>
+                <tr>
+                    <th>Created at</th>
+                    <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('student') }}">
+            Back to the list
+        </a>
+        <br />
+        <a href="{{ path('student_edit', {'id': entity.id}) }}" class="btn btn-warning">
+            Edit
+        </a>
+
+        {{ form(delete_form) }}
+    </div>
+</div>
+{% endblock %}
