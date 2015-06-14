@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Admission</h1>
+
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Session date</th>
+                        <td>{{ entity.sessionDate|date('Y-m-d') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Budget financed no</th>
+                        <td>{{ entity.budgetFinancedNo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fee payer no</th>
+                        <td>{{ entity.feePayerNo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Budget fee threshold</th>
+                        <td>{{ entity.budgetFeeThreshold }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fee rejected threshold</th>
+                        <td>{{ entity.feeRejectedThreshold }}</td>
+                    </tr>
+                    <tr>
+                        <th>Created at</th>
+                        <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Closed at</th>
+                        <td>{% if entity.closedAt %}{{ entity.closedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>{{ entity.status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="{{ path('admission') }}">
+                Back to the list
+            </a>
+            <br />
+            <a href="{{ path('admission_edit', {'id': entity.id}) }}" class="btn btn-warning">
+                Edit
+            </a>
+
+            {{ form(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

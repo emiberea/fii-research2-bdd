@@ -5,6 +5,8 @@ namespace EB\AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
+use EB\AppBundle\Entity\Admission;
 
 class StudentType extends AbstractType
 {
@@ -26,10 +28,18 @@ class StudentType extends AbstractType
             ->add('admissionExamGrade')
             ->add('baccalaureateAverageGrade')
             ->add('baccalaureateMaximumGrade')
-            ->add('admission')
+            ->add('admission', 'entity', [
+                'class' => 'EBAppBundle:Admission',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('a')
+                        ->where('a.status = :status')
+                        ->setParameter('status', Admission::STATUS_OPEN);
+                },
+                'placeholder' => false,
+            ])
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

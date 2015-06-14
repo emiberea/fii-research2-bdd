@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Admission list</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Admission list - table</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="panel-title">Admission that we have stored in the system.</h3>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Session date</th>
+                            <th>Budget financed no</th>
+                            <th>Fee payer no</th>
+                            <th>Budget-fee threshold</th>
+                            <th>Fee-rejected threshold</th>
+                            <th>Created at</th>
+                            <th>Closed at</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('admission_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{% if entity.sessionDate %}{{ entity.sessionDate|date('Y-m-d') }}{% endif %}</td>
+                            <td>{{ entity.budgetFinancedNo }}</td>
+                            <td>{{ entity.feePayerNo }}</td>
+                            <td>{{ entity.budgetFeeThreshold }}</td>
+                            <td>{{ entity.feeRejectedThreshold }}</td>
+                            <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{% if entity.closedAt %}{{ entity.closedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ entity.status }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('admission_show', { 'id': entity.id }) }}">show</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('admission_edit', { 'id': entity.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="panel-footer">
+                    <a href="{{ path('admission_new') }}">
+                        Create new admission
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

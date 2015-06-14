@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form 'EBAppBundle:Form:fields.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Admission creation</h1>
+
+            <form action="{{ path('admission_create') }}" {{ form_enctype(form) }} method="POST" role="form">
+                <div class="form-group">
+                    {{ form_label(form.sessionDate) }}
+                    {{ form_widget(form.sessionDate, {attr: {placeholder: '0.00'}}) }}
+                    {{ form_errors(form.sessionDate) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.budgetFinancedNo) }}
+                    {{ form_widget(form.budgetFinancedNo, {attr: {placeholder: '0'}}) }}
+                    {{ form_errors(form.budgetFinancedNo) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.feePayerNo) }}
+                    {{ form_widget(form.feePayerNo, {attr: {placeholder: '0'}}) }}
+                    {{ form_errors(form.feePayerNo) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-success'}}) }}
+                </div>
+                {{ form_rest(form) }}
+            </form>
+
+            <a href="{{ path('admission') }}">
+                Back to the list
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -17,6 +17,12 @@ class Admission
     const STATUS_PROCESSING = 1;
     const STATUS_CLOSED = 2;
 
+    public static $statusArr = [
+        self::STATUS_OPEN => 'Open',
+        self::STATUS_PROCESSING => 'Processing',
+        self::STATUS_CLOSED => 'Closed',
+    ];
+
     /**
      * @var integer
      *
@@ -50,14 +56,14 @@ class Admission
     /**
      * @var float
      *
-     * @ORM\Column(name="budget_fee_threshold", type="decimal", precision=4, scale=2)
+     * @ORM\Column(name="budget_fee_threshold", type="decimal", precision=4, scale=2, nullable=true)
      */
     private $budgetFeeThreshold;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="fee_rejected_threshold", type="decimal", precision=4, scale=2)
+     * @ORM\Column(name="fee_rejected_threshold", type="decimal", precision=4, scale=2, nullable=true)
      */
     private $feeRejectedThreshold;
 
@@ -71,7 +77,7 @@ class Admission
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="closed_at", type="datetime")
+     * @ORM\Column(name="closed_at", type="datetime", nullable=true)
      */
     private $closedAt;
 
@@ -95,6 +101,11 @@ class Admission
         $this->createdAt = new \DateTime();
         $this->status = self::STATUS_OPEN;
         $this->students = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->sessionDate->format('Y-m-d') . ' (' . $this->budgetFinancedNo . '/' . $this->feePayerNo . ')';
     }
 
 
