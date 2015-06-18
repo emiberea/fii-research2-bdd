@@ -1,0 +1,45 @@
+Feature: Student related scenarios
+  In order to manage the students that have attended the admission session
+  As a logged user
+  I need to be able to do CRUD operation on Student entity
+
+  Background:
+    Given I am on "/"
+    When I follow "Login"
+    Then I should be on "/login"
+    And I should see "Login"
+    And I should see "Forgot your password?"
+    When I fill in "username" with "user1"
+    And I fill in "password" with "12345"
+    And I press "Login"
+    Then I should be on "/"
+    And I should see "FII research2 - Main page"
+
+  Scenario: Add a new student
+    When I follow "Student"
+    Then I should be on "/student/"
+    And I should see "Student list"
+    And I should see "Student that are now registered in the system."
+    When I follow "Create new student"
+    Then I should be on "/student/new"
+    And I should see "Student creation"
+    When I fill in "eb_appbundle_student_firstName" with "StudentF1"
+    And I fill in "eb_appbundle_student_lastName" with "StudentL1"
+    And I fill in "eb_appbundle_student_fatherInitial" with "A"
+    And I fill in "eb_appbundle_student_pin" with "12345"
+    And I fill in "eb_appbundle_student_city" with "Bucharest"
+    And I fill in "eb_appbundle_student_address" with "street avenue"
+    And I fill in "eb_appbundle_student_highSchool" with "Very High School"
+    And I fill in "eb_appbundle_student_specialization" with "Computer science"
+    And I fill in "eb_appbundle_student_admissionExamGrade" with "8.10"
+    And I fill in "eb_appbundle_student_baccalaureateAverageGrade" with "7.50"
+    And I fill in "eb_appbundle_student_baccalaureateMaximumGrade" with "8.80"
+    And I press "Create"
+    Then I should see "StudentF1"
+    And I should see "StudentL1"
+    When I follow "Back to the list"
+    Then I should be on "/student/"
+    And I should see "Student list"
+    And I should see "Student that are now registered in the system."
+    And I should see "StudentF1"
+    And I should see "StudentL1"

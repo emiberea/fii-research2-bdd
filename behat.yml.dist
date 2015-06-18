@@ -1,0 +1,12 @@
+default:
+    extensions:
+        Behat\Symfony2Extension: ~
+        Behat\MinkExtension:
+            sessions:
+                default:
+                    symfony2: ~
+    autoload:
+        '': %paths.base%/features # paths.base parameter is the directory where is located behat.yml file
+    suites:
+        default:
+            contexts: [Context\FeatureContext]

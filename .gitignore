@@ -11,3 +11,4 @@
 /web/bundles/
 /web/vendor/
 .idea/
+behat.yml
